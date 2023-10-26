@@ -605,3 +605,13 @@ hr {
         padding: 12px;
     }
 }
+.dark-layout{
+  
+    .chat-left-box, .card, .left-side-box, .left-header{
+        background-color: #283046 !important;
+        border: none !important;
+    }
+ .ava-content{
+    padding: 12px;
+ }
+}

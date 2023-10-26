@@ -150,10 +150,10 @@ const SideChat = () => {
                 <div className="d-flex justify-content-between align-items-center">
                   <div className=" d-flex gap-50">
                     <Label>Content</Label>
-                    <HelpCircle size={16} id='positionTop'/>
-                    <UncontrolledTooltip placement='top' target='positionTop'>
-      Add The content you would like to Improve
-      </UncontrolledTooltip>
+                    <HelpCircle size={16} id="positionTop" />
+                    <UncontrolledTooltip placement="top" target="positionTop">
+                      Add The content you would like to Improve
+                    </UncontrolledTooltip>
                   </div>
                   <div>
                     <small>0/8000</small>
