@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
-import { Trash2 } from "react-feather";
+import { Send, Trash2 } from "react-feather";
 import { Button, Input, InputGroup, InputGroupText } from "reactstrap";
 const arr = [
   {
@@ -73,8 +73,11 @@ const chat = () => {
               }}
             />
             <InputGroupText>
-              <Button className="primary-btn" type="submit">
+              <Button className="primary-btn d-sm-block d-none" type="submit">
                 Send
+              </Button>
+              <Button className="primary-btn d-sm-none d-block" type="submit">
+                <Send size={16}/>
               </Button>
             </InputGroupText>
           </InputGroup>

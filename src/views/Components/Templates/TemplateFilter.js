@@ -37,41 +37,41 @@ const TemplateFilter = () => {
               <ul>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Universal</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Marketing</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Sales</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Finance</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Operations & support</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Human resources</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Technical</Label>
                 </li>
                 <li>
-                <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Other</Label>
                 </li>
               </ul>
@@ -81,53 +81,52 @@ const TemplateFilter = () => {
               <ul>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Email</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Blog Post</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Ads</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Social media</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Ecommerce</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Real estate</Label>
                 </li>
                 <li>
                   {" "}
-                  <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>SEO</Label>
                 </li>
                 <li>
-                <CustomCheckbox/>
+                  <CustomCheckbox />
                   <Label>Website</Label>
                 </li>
               </ul>
             </div>
           </div>
-<div className="d-flex gap-1">
-<Button className="primary-btn">Continue</Button>
-          <Button className="secondary-btn" onClick={toggleCanvasEnd}>
-            Cancel
-          </Button>
-</div>
-         
+          <div className="d-flex gap-1">
+            <Button className="primary-btn">Continue</Button>
+            <Button className="secondary-btn" onClick={toggleCanvasEnd}>
+              Cancel
+            </Button>
+          </div>
         </OffcanvasBody>
       </Offcanvas>
     </div>

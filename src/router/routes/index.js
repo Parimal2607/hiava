@@ -32,6 +32,7 @@ const ChatPage = lazy(() => import("../../views/Components/Chat/Chat"));
 const Template = lazy(() =>
   import("../../views/Components/Templates/Template.js")
 );
+const SideChat = lazy(() => import("../../views/Components/common/SideChat"));
 
 const Login = lazy(() => import("../../views/Login"));
 const Register = lazy(() => import("../../views/Register"));
@@ -52,6 +53,10 @@ const Routes = [
   {
     path: "/chat",
     element: <ChatPage />,
+  },
+  {
+    path: "/side-chat",
+    element: <SideChat />,
   },
   {
     path: "/template",

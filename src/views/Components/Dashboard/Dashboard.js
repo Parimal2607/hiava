@@ -6,6 +6,7 @@ import ChatImage from "../../../assets/images/logo/content-text.svg";
 import emailImage from "../../../assets/images/logo/email.svg";
 import AvaTemp1 from "../../../assets/images/pages/ava-temp1.png";
 import AvaTemp2 from "../../../assets/images/pages/ava-temp2.jpeg";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -22,47 +23,51 @@ const Dashboard = () => {
         <div className="create-content-header my-2">
           <h4>Create content</h4>
         </div>
-        <Row>
+        <Row className="match-height">
           <Col lg="6">
             <Card className="dashboard-welcome-cards">
-              <CardBody>
-                <div className="d-flex gap-1">
-                  <div className="card-icon">
-                    <div className="inner-div">
-                      <Icon icon="line-md:text-box-multiple" width="18" />
+              <Link to="/template">
+                <CardBody>
+                  <div className="d-flex gap-1">
+                    <div className="card-icon">
+                      <div className="inner-div">
+                        <Icon icon="line-md:text-box-multiple" width="18" />
+                      </div>
+                    </div>
+                    <div className="card-content">
+                      <h5>Explore templates</h5>
+                      <p>
+                        Trained on industry best practices and proven examples,
+                        enabling it to generate high-quality writing for 50+
+                        unique use-cases.
+                      </p>
                     </div>
                   </div>
-                  <div className="card-content">
-                    <h5>Explore templates</h5>
-                    <p>
-                      Trained on industry best practices and proven examples,
-                      enabling it to generate high-quality writing for 50+
-                      unique use-cases.
-                    </p>
-                  </div>
-                </div>
-              </CardBody>
+                </CardBody>
+              </Link>
             </Card>
           </Col>
           <Col lg="6">
-            <Card className="dashboard-welcome-cards">
-              <CardBody>
-                <div className="d-flex gap-1">
-                  <div className="card-icon">
-                    <div className="inner-div">
-                      <Icon icon="bx:chat" width="18" />
+              <Card className="dashboard-welcome-cards">
+            <Link to="/chat">
+                <CardBody>
+                  <div className="d-flex gap-1">
+                    <div className="card-icon">
+                      <div className="inner-div">
+                        <Icon icon="bx:chat" width="18" />
+                      </div>
+                    </div>
+                    <div className="card-content">
+                      <h5>Chat with Ava</h5>
+                      <p>
+                        Ask your friendly AI assistant to generate ideas, revise
+                        your content, and even make you laugh.
+                      </p>
                     </div>
                   </div>
-                  <div className="card-content">
-                    <h5>Chat with Ava</h5>
-                    <p>
-                      Ask your friendly AI assistant to generate ideas, revise
-                      your content, and even make you laugh.
-                    </p>
-                  </div>
-                </div>
-              </CardBody>
-            </Card>
+                </CardBody>
+            </Link>
+              </Card>
           </Col>
         </Row>
       </div>
@@ -154,7 +159,7 @@ const Dashboard = () => {
           <Col lg="6">
             <Card className="ava-use-cards">
               <CardBody className="p-0">
-              <div className="img-hover">
+                <div className="img-hover">
                   <img
                     src={AvaTemp2}
                     alt="Content improver"

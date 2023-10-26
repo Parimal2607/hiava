@@ -43,9 +43,9 @@ const IntlDropdown = () => {
         <ReactCountryFlag
           svg
           className="country-flag flag-icon"
-          countryCode={i18n.language === "en" ? "us" : i18n.language}
+          countryCode="US" 
         />
-        <span className="selected-language">{langObj[i18n.language]}</span>
+        <span className="selected-language">English</span>
       </DropdownToggle>
       <DropdownMenu className="mt-0" end>
         <DropdownItem
