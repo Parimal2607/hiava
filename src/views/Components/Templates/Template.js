@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Filter, Heart, Mail, Search } from "react-feather";
 import { Link } from "react-router-dom";
 import {
@@ -14,10 +14,15 @@ import {
   InputGroupText,
   Row,
 } from "reactstrap";
-import MessageImage from "../../../assets/images/logo/message.svg";
 import SuggestionModal from "./SuggestionModal";
 import TemplateFilter from "./TemplateFilter";
+import { template } from "../../../constant";
 const Template = () => {
+  const classes = {
+    universal: "universal",
+    popular: "popular",
+
+  }
   return (
     <div className="template">
       <div className="template-header mb-2">
@@ -44,29 +49,39 @@ const Template = () => {
           </CardHeader>
         </Card>
       </div>
-      <Row>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => (
-          <Col lg="3">
-            <Link to="/side-chat">
-            <Card className="template-card">
-              <CardBody>
-                <div class="d-flex justify-content-between">
-                  <img src={MessageImage} alt="message" className="img-fluid" />
-                  <Heart size={20} color="#6938ef" />
-                </div>
+      <Row className="match-height">
+        {template.map((temp, id) => {
+          return (
+            <Col lg="3" key={id}>
+              <Card className="template-card">
+                <Link to="/side-chat" className="h-100">
+                  <div className="d-flex flex-column h-100 justify-content-between">
 
-                <div className="template-content mt-2">
-                  <h5>Email Responder</h5>
-                  <p>Answer any email in seconds.</p>
-                </div>
-              </CardBody>
-              <CardFooter className="text-end">
-                <Badge className="universal">universal</Badge>
-              </CardFooter>
-            </Card>
-            </Link>
-          </Col>
-        ))}
+                
+                  <CardBody className="d-flex flex-column justify-content-between">
+                    <div class="d-flex justify-content-between">
+                      <img
+                        src={temp.image}
+                        alt={temp.image}
+                        className="img-fluid"
+                      />
+                      <Heart size={20} color="#6938ef" />
+                    </div>
+
+                    <div className="template-content mt-1">
+                      <h5>{temp.name}</h5>
+                      <p>{temp.description}</p>
+                    </div>
+                  </CardBody>
+                  <CardFooter className="text-end position">
+                    <Badge className={temp.department ? temp.department : ""}>{temp.department}</Badge>
+                  </CardFooter>
+                  </div>
+                </Link>
+              </Card>
+            </Col>
+          );
+        })}
       </Row>
     </div>
   );

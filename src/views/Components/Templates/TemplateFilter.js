@@ -8,7 +8,6 @@ import {
   Label,
 } from "reactstrap";
 import CustomCheckbox from "../common/CustomCheckbox";
-
 const TemplateFilter = () => {
   const [canvasPlacement, setCanvasPlacement] = useState("start");
   const [canvasOpen, setCanvasOpen] = useState(false);
@@ -30,10 +29,11 @@ const TemplateFilter = () => {
         toggle={toggleCanvasEnd}
       >
         <OffcanvasHeader toggle={toggleCanvasEnd}>Filters</OffcanvasHeader>
-        <OffcanvasBody>
+        <OffcanvasBody className="position-relative">
           <div className="filter-section">
             <div className="department-section">
               <p className="title">Department</p>
+              
               <ul>
                 <li>
                   {" "}
@@ -121,8 +121,8 @@ const TemplateFilter = () => {
               </ul>
             </div>
           </div>
-          <div className="d-flex gap-1">
-            <Button className="primary-btn">Continue</Button>
+          <div className=" d-flex gap-1">
+            <Button className="primary-btn">Apply</Button>
             <Button className="secondary-btn" onClick={toggleCanvasEnd}>
               Cancel
             </Button>

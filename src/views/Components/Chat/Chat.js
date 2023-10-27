@@ -14,6 +14,7 @@ const arr = [
 const chat = () => {
   const [inputText, setInputText] = useState("");
   const [convarstionArr, setConvarstionArr] = useState([...(arr || [])]);
+
   return (
     <div className="chat-box">
       <div className="chat-header">
@@ -26,7 +27,7 @@ const chat = () => {
             <small>@sumit</small>
           </div>
         </div>
-        <div className="action">
+        <div className="action" role="button">
           <Trash2 />
         </div>
       </div>
@@ -36,7 +37,7 @@ const chat = () => {
           <div className={chat?.isAI ? "d-flex justify-content-start" : "justify-content-end d-flex my-2"}>
             <div className={chat?.isAI ? "chat-left" : "chat-right"}>
               <div className="d-flex justify-content-between align-items-center">
-                <p className="ai-name">Ava</p>
+                <p className="ai-name">{chat?.isAI ? "Ava" : "You"}</p>
                 {/* <p className="time">{chat?.created_date?.toString()}</p> */}
                 <p className="time">Just Now</p>
               </div>

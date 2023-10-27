@@ -46,6 +46,7 @@ hr {
     background-color: transparent !important;
     color: $primary !important;
     border-color: $primary !important;
+
     &:hover {
         box-shadow: none !important;
     }
@@ -62,8 +63,41 @@ hr {
 }
 
 .universal {
-    background-color: rgba($color: $primary, $alpha: 0.2) !important;
-    color: $primary;
+    color: #5925dc;
+    background-color: #f4f3ff !important;
+}
+
+.popular {
+    color: #027a48;
+    background-color: #ecfdf3 !important;
+}
+
+.marketing {
+    color: #175cd3;
+    background-color: #eff8ff !important;
+}
+
+.sales {
+    color: #b42318;
+    background-color: #fef3f2 !important;
+}
+
+.support {
+    color: #b54708;
+    background-color: #fffaeb !important;
+}
+
+.finance{
+    color: #026aa2 ;
+    background-color: #f0f9ff !important;
+}
+.technical{
+    color: #363f72;
+    background-color: #f8f9fc !important;
+}
+.human{
+    color: #c11574;
+    background-color: #fdf2fa !important;
 }
 
 // dashboard css start here
@@ -590,28 +624,37 @@ hr {
     flex-direction: column;
     justify-content: space-between;
     overflow: auto;
+
     .left-header {
         padding: 12px;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     }
-    .left-content{
+
+    .left-content {
         padding: 12px;
     }
-    .description{
+
+    .description {
         padding: 12px;
     }
-    .left-footer{
+
+    .left-footer {
         padding: 12px;
     }
 }
-.dark-layout{
-  
-    .chat-left-box, .card, .left-side-box, .left-header{
+
+.dark-layout {
+
+    .chat-left-box,
+    .card,
+    .left-side-box,
+    .left-header {
         background-color: #283046 !important;
         border: none !important;
     }
- .ava-content{
-    padding: 12px;
- }
+
+    .ava-content {
+        padding: 12px;
+    }
 }
