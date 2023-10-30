@@ -1,10 +1,21 @@
 import React, { useState } from "react";
+const newArr = [];
+const CustomCheckbox = ({ val, sendData, setDeptVal, setIsChecked, isChecked, setFlag }) => {
+  
+  // const [isChecked, setIsChecked] = useState(false);
+  // const [deptVal, setDeptVal] = useState(false);
 
-const CustomCheckbox = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const toggleCheckbox = () => {
+  const toggleCheckbox = (event) => {
     setIsChecked(!isChecked);
+    event.target.value = event.target.value?.toLowerCase()
+    if (!newArr.includes(event.target.value)) {
+      newArr.push(event.target.value);
+    } else {
+      const arr = newArr.indexOf(event.target.value);
+      newArr.splice(arr, 1);
+    }
+    sendData(newArr);
+    setFlag(prev => !prev)
   };
   return (
     <div className="custom-checkbox">
@@ -15,6 +26,7 @@ const CustomCheckbox = () => {
             onChange={toggleCheckbox}
             type="checkbox"
             id="cbx-12"
+            value={val}
           />
           <label for="cbx-12" onClick={toggleCheckbox}></label>
           <svg fill="none" viewBox="0 0 15 14" height="10" width="11">

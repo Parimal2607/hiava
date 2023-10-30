@@ -8,10 +8,31 @@ import {
   Label,
 } from "reactstrap";
 import CustomCheckbox from "../common/CustomCheckbox";
-const TemplateFilter = () => {
+const filValue = [
+  "Universal",
+  "Marketing",
+  "Sales",
+  "Finance",
+  "Operations & support",
+  "Human resources",
+  "Technical",
+  "Other",
+];
+const filValue1 = [
+  "Email",
+  "Blog Post",
+  "Ads",
+  "Social media",
+  "Ecommerce",
+  "Real estate",
+  "SEO",
+  "Website",
+];
+const TemplateFilter = ({ sendData, setFlag, appylyFunc }) => {
   const [canvasPlacement, setCanvasPlacement] = useState("start");
   const [canvasOpen, setCanvasOpen] = useState(false);
-
+  const [deptVal, setDeptVal] = useState(false);
+  // const [isChecked, setIsChecked] = useState(false)
   const toggleCanvasEnd = () => {
     setCanvasPlacement("end");
     setCanvasOpen(!canvasOpen);
@@ -33,96 +54,51 @@ const TemplateFilter = () => {
           <div className="filter-section">
             <div className="department-section">
               <p className="title">Department</p>
-              
+
               <ul>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Universal</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Marketing</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Sales</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Finance</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Operations & support</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Human resources</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Technical</Label>
-                </li>
-                <li>
-                  <CustomCheckbox />
-                  <Label>Other</Label>
-                </li>
+                {filValue.map((val, index) => {
+                  const [isChecked, setIsChecked] = useState(false);
+                  return (
+                    <li key={index}>
+                      {" "}
+                      <CustomCheckbox
+                        val={val}
+                        sendData={sendData}
+                        setDeptVal={setDeptVal}
+                        isChecked={isChecked}
+                        setIsChecked={setIsChecked}
+                        {...{ setFlag }}
+                      />
+                      <Label value={val}>{val}</Label>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
             <div className="department-section">
               <p className="title">Usecase</p>
               <ul>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Email</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Blog Post</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Ads</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Social media</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Ecommerce</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>Real estate</Label>
-                </li>
-                <li>
-                  {" "}
-                  <CustomCheckbox />
-                  <Label>SEO</Label>
-                </li>
-                <li>
-                  <CustomCheckbox />
-                  <Label>Website</Label>
-                </li>
+                {filValue1.map((val1, index) => (
+                  <li key={index}>
+                    {" "}
+                    <CustomCheckbox value={val1} />
+                    <Label value={val1}>{val1}</Label>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
           <div className=" d-flex gap-1">
-            <Button className="primary-btn">Apply</Button>
+            <Button
+              className="primary-btn"
+              onClick={() => {
+                appylyFunc();
+                setCanvasOpen(!canvasOpen);
+                sendData()
+              }}
+            >
+              Apply
+            </Button>
             <Button className="secondary-btn" onClick={toggleCanvasEnd}>
               Cancel
             </Button>
