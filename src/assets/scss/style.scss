@@ -87,19 +87,35 @@ hr {
     background-color: #fffaeb !important;
 }
 
-.finance{
-    color: #026aa2 ;
+.finance {
+    color: #026aa2;
     background-color: #f0f9ff !important;
 }
-.technical{
+
+.technical {
     color: #363f72;
     background-color: #f8f9fc !important;
 }
-.human{
+
+.human {
     color: #c11574;
     background-color: #fdf2fa !important;
 }
 
+.social-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 100px;
+    margin-right: 12px;
+}
+// react select css 
+.react-select{
+    .select__menu {
+        .select__menu-list{
+            @include scroll-bar;
+        }
+    }
+}
 // dashboard css start here
 
 .dashboard {

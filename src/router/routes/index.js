@@ -55,7 +55,7 @@ const Routes = [
     element: <ChatPage />,
   },
   {
-    path: "/side-chat",
+    path: "/side-chat/:id",
     element: <SideChat />,
   },
   {

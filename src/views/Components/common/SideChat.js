@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import {
   Send,
@@ -32,6 +32,9 @@ import {
 } from "reactstrap";
 import Select, { components } from "react-select";
 import ContentImage from "../../../assets/images/logo/content.svg";
+import { useNavigate, useParams } from "react-router-dom";
+import { template } from "../../../constant";
+
 const arr = [
   {
     id: 1,
@@ -41,72 +44,13 @@ const arr = [
     created_date: new Date(),
   },
 ];
-const iconOptions = [
-  {
-    label: "Social Media",
-    options: [
-      {
-        value: "facebook",
-        label: "Facebook",
-        icon: Facebook,
-      },
-      {
-        value: "twitter",
-        label: "Twitter",
-        icon: Twitter,
-      },
-      {
-        value: "linkedin",
-        label: "Linkedin",
-        icon: Linkedin,
-      },
-      {
-        value: "github",
-        label: "Github",
-        icon: GitHub,
-      },
-      {
-        value: "instagram",
-        label: "Instagram",
-        icon: Instagram,
-      },
-      {
-        value: "dribbble",
-        label: "Dribbble",
-        icon: Dribbble,
-      },
-      {
-        value: "gitlab",
-        label: "Gitlab",
-        icon: Gitlab,
-      },
-    ],
-  },
-  {
-    label: "File Types",
-    options: [
-      { value: "pdf", label: "PDF", icon: File },
-      { value: "txt", label: "txt", icon: FileText },
-      { value: "image", label: "Image", icon: Image },
-    ],
-  },
-  {
-    label: "Others",
-    options: [
-      { value: "figma", label: "Figma", icon: Figma },
-      { value: "chrome", label: "Chrome", icon: Chrome },
-      { value: "safari", label: "Safari", icon: Globe },
-      { value: "slack", label: "Slack", icon: Slack },
-      { value: "youtube", label: "Youtube", icon: Youtube },
-    ],
-  },
-];
+
 const OptionComponent = ({ data, ...props }) => {
   const Icon = data.icon;
 
   return (
     <components.Option {...props}>
-      <Icon className="me-50" size={14} />
+      <img src={Icon} alt="icon" className="social-icon" />
       {data.label}
     </components.Option>
   );
@@ -115,6 +59,33 @@ const OptionComponent = ({ data, ...props }) => {
 const SideChat = () => {
   const [inputText, setInputText] = useState("");
   const [convarstionArr, setConvarstionArr] = useState([...(arr || [])]);
+  const [dataId, setDataId] = useState(template);
+  const [value, setValue] = useState(template);
+
+  const data = useParams();
+  const navigate = useNavigate();
+  
+  const filterId = dataId.filter((user) => user.id == data.id);
+  const MediaOption = () => {
+    let arr = [];
+    template?.map((item) => {
+      arr.push({
+        label: item?.name,
+        value: item?.name,
+        icon: item?.image,
+        id: item?.id,
+      });
+    });
+    return arr;
+  };
+
+  let iconOptions = MediaOption();
+
+  const halndelChange = (e) => {
+    navigate(`/side-chat/${e.id}`);
+    setValue(e.id);
+  };
+
   return (
     <>
       <Row>
@@ -126,25 +97,39 @@ const SideChat = () => {
                   options={iconOptions}
                   className="react-select"
                   classNamePrefix="select"
+                  isSearchable
                   components={{
                     Option: OptionComponent,
                   }}
+                  value={iconOptions.find(
+                    (item) => item.id === Number(data?.id)
+                  )}
+                  onChange={(e) => halndelChange(e)}
+                  getOptionLabel={(data) => (
+                    <div className="select-option m-0">
+                      <img src={data.icon} alt="icon" className="social-icon" />
+                      {data.label}
+                    </div>
+                  )}
                 />
               </div>
-              <div className="left-content align-items-start d-flex gap-1 left-content">
-                <img
-                  src={ContentImage}
-                  alt="content-img"
-                  className="img-fluid"
-                />
-                <div>
-                  <h5>Content Improver</h5>
-                  <p>
-                    Transform a piece of content to be more captivating,
-                    appealing and engaging.
-                  </p>
+              {filterId.map((user, id) => (
+                <div
+                  className="left-content align-items-start d-flex gap-1 left-content"
+                  key={id}
+                >
+                  <img
+                    src={user.image}
+                    alt={user.image}
+                    className="img-fluid"
+                  />
+                  <div>
+                    <h5>{user.name}</h5>
+                    <p>{user.description}</p>
+                  </div>
                 </div>
-              </div>
+              ))}
+
               <hr />
               <div className="description">
                 <div className="d-flex justify-content-between align-items-center">

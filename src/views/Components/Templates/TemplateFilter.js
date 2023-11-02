@@ -40,9 +40,12 @@ const TemplateFilter = ({ sendData, setFlag, appylyFunc }) => {
 
   return (
     <div className="filter-sidebar">
-      <Button className="primary-btn" onClick={toggleCanvasEnd}>
+      <Button className="primary-btn d-sm-block d-none" onClick={toggleCanvasEnd}>
         <Filter size={18} />
       </Button>
+      <div onClick={toggleCanvasEnd} role="button" className="d-sm-none d-block">
+        <Filter size={18} />
+      </div>
 
       <Offcanvas
         direction={canvasPlacement}
@@ -94,7 +97,7 @@ const TemplateFilter = ({ sendData, setFlag, appylyFunc }) => {
               onClick={() => {
                 appylyFunc();
                 setCanvasOpen(!canvasOpen);
-                sendData()
+                sendData();
               }}
             >
               Apply

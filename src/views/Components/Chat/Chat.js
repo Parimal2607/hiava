@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Send, Trash2 } from "react-feather";
 import { Button, Input, InputGroup, InputGroupText } from "reactstrap";
+import { Helmet } from "react-helmet";
 const arr = [
   {
     id: 1,
@@ -16,6 +17,11 @@ const chat = () => {
   const [convarstionArr, setConvarstionArr] = useState([...(arr || [])]);
 
   return (
+    <>
+     <Helmet>
+        <title>Chat</title>
+      </Helmet>
+   
     <div className="chat-box">
       <div className="chat-header">
         <div className="d-flex gap-50">
@@ -85,6 +91,7 @@ const chat = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

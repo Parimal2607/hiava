@@ -14,7 +14,7 @@ const SuggestionModal = () => {
   return (
     <div>
       <div className="vertically-centered-modal">
-        <div className="suggetion-icon"  onClick={() => setCenteredModal(!centeredModal)}>
+        <div className="suggetion-icon "  onClick={() => setCenteredModal(!centeredModal)}>
           <Icon
             icon="iconoir:suggestion"
             width={20}
@@ -22,6 +22,7 @@ const SuggestionModal = () => {
             role="button"
           />
         </div>
+       
         <Modal
           isOpen={centeredModal}
           toggle={() => setCenteredModal(!centeredModal)}

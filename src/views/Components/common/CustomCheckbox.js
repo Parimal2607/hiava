@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 const newArr = [];
-const CustomCheckbox = ({ val, sendData, setDeptVal, setIsChecked, isChecked, setFlag }) => {
+const CustomCheckbox = ({ val,  sendData, setDeptVal, setIsChecked, isChecked, setFlag }) => {
   
   // const [isChecked, setIsChecked] = useState(false);
   // const [deptVal, setDeptVal] = useState(false);
