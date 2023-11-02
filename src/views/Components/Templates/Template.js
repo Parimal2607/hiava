@@ -18,6 +18,7 @@ import SuggestionModal from "./SuggestionModal";
 import TemplateFilter from "./TemplateFilter";
 import { template } from "../../../constant";
 import { Helmet } from "react-helmet";
+import Fav from "../common/Fav";
 const Template = () => {
   const [tempvalue, setTempValue] = useState(template);
   const [dept, setDept] = useState([]);
@@ -82,7 +83,7 @@ const Template = () => {
                   </InputGroupText>
                   <Input
                     type="text"
-                    placeholder="Search"
+                    placeholder="Search by department e.g. universal"
                     value={searchItem}
                     onChange={handleInputChange}
                   />
@@ -105,30 +106,33 @@ const Template = () => {
                 <Col lg="3" key={temp.id}>
                   <Card className="template-card">
                     <Link to={`/side-chat/${temp.id}`} className="h-100">
-                      <div className="d-flex flex-column h-100 justify-content-between">
-                        <CardBody className="d-flex flex-column">
-                          <div class="d-flex justify-content-between">
-                            <img
-                              src={temp.image}
-                              alt={temp.image}
-                              className="img-fluid"
-                            />
-                            <Heart size={20} color="#6938ef" />
+                    <div className="d-flex flex-column h-100 justify-content-between">
+                      <CardBody className="d-flex flex-column">
+                        <div class="d-flex justify-content-between">
+                          <img
+                            src={temp.image}
+                            alt={temp.image}
+                            className="img-fluid"
+                          />
+                          {/* <Heart size={20} color="#6938ef" /> */}
+                          <div onClick={(e) => e.stopPropagation()}>
+                            <Fav />
                           </div>
+                        </div>
 
-                          <div className="template-content mt-1">
-                            <h5>{temp.name}</h5>
-                            <p>{temp.description}</p>
-                          </div>
-                        </CardBody>
-                        <CardFooter className="text-end position">
-                          <Badge
-                            className={temp.department ? temp.department : ""}
-                          >
-                            {temp.department}
-                          </Badge>
-                        </CardFooter>
-                      </div>
+                        <div className="template-content mt-1">
+                          <h5>{temp.name}</h5>
+                          <p>{temp.description}</p>
+                        </div>
+                      </CardBody>
+                      <CardFooter className="text-end position">
+                        <Badge
+                          className={temp.department ? temp.department : ""}
+                        >
+                          {temp.department}
+                        </Badge>
+                      </CardFooter>
+                    </div>
                     </Link>
                   </Card>
                 </Col>

@@ -16,7 +16,7 @@ import { selectThemeColors } from '@utils'
 
 // ** Demo Components
 import DeleteAccount from './DeleteAccount'
-
+import { Helmet } from "react-helmet";
 const countryOptions = [
   { value: 'uk', label: 'UK' },
   { value: 'usa', label: 'USA' },
@@ -112,6 +112,9 @@ const Profile = ({ data }) => {
 
   return (
     <Fragment>
+       <Helmet>
+        <title>Profile</title>
+      </Helmet>
       <Card>
         <CardHeader className='border-bottom'>
           <CardTitle tag='h4'>Profile Details</CardTitle>
