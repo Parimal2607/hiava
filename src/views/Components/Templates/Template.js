@@ -116,7 +116,7 @@ const Template = () => {
                           />
                           {/* <Heart size={20} color="#6938ef" /> */}
                           <div onClick={(e) => e.stopPropagation()}>
-                            <Fav />
+                            <Fav department={temp.department}/>
                           </div>
                         </div>
 

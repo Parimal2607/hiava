@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 
-const Fav = () => {
+const Fav = ({department}) => {
     const [isChecked, setIsChecked] = useState(false);
     const toggleCheckbox = () => {
         setIsChecked(!isChecked);
@@ -9,7 +9,7 @@ const Fav = () => {
        
   return (
     <div className="fav">
-    <div class={isChecked ? "con-like after-hover" : "con-like"}>
+    <div class={isChecked ? `con-like after-hover ${department}` : `con-like ${department}`}>
       <input class="like" type="checkbox" title="like" checked={isChecked} onChange={toggleCheckbox}/>
       <div class="checkmark">
         <svg

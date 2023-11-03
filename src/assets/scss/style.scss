@@ -686,6 +686,45 @@ hr {
         position: relative;
         width: 30px;
         height: 30px;
+
+        &.universal {
+            --red: #5925dc;
+        }
+
+        &.popular {
+            --red: #027a48;
+
+        }
+
+        &.marketing {
+            --red: #175cd3;
+
+        }
+
+        &.sales {
+            --red: #b42318;
+
+        }
+
+        &.support {
+            --red: #b54708;
+
+        }
+
+        &.finance {
+            --red: #026aa2;
+
+        }
+
+        &.technical {
+            --red: #363f72;
+
+        }
+
+        &.human {
+            --red: #c11574;
+
+        }
     }
 
     .con-like .like {
