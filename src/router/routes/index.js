@@ -34,6 +34,7 @@ const Template = lazy(() =>
 );
 const SideChat = lazy(() => import("../../views/Components/common/SideChat"));
 const Profile = lazy(() => import("../../views/Components/Profile/Profile"));
+const WebPage = lazy(() => import("../../views/Components/WebPage/LandingPage"));
 const Login = lazy(() => import("../../views/Login"));
 const Register = lazy(() => import("../../views/Register"));
 const ForgotPassword = lazy(() => import("../../views/ForgotPassword"));
@@ -65,6 +66,13 @@ const Routes = [
   {
     path: "/template",
     element: <Template />,
+  },
+  {
+    path: "/web-page",
+    element: <WebPage />,
+    meta: {
+      layout: "blank",
+    },
   },
   {
     path: "/login",

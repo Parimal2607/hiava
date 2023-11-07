@@ -1,5 +1,5 @@
 // ** React Imports
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // ** Custom Hooks
 import { useSkin } from "@hooks/useSkin";
@@ -16,7 +16,6 @@ import {
   Col,
   CardTitle,
   CardText,
-  Form,
   Label,
   Input,
   Button,
@@ -25,15 +24,42 @@ import {
 // ** Illustrations Imports
 import illustrationsLight from "@src/assets/images/pages/register-v2.svg";
 import illustrationsDark from "@src/assets/images/pages/register-v2-dark.svg";
-
+import { Formik, Form } from "formik";
 // ** Styles
 import "@styles/react/pages/page-authentication.scss";
-
+import { RegisterSchema } from "./schema";
+import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
+const initialValues = {
+  username: "",
+  email: "",
+  password: "",
+};
 const Register = () => {
   // ** Hooks
   const { skin } = useSkin();
-
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
   const source = skin === "dark" ? illustrationsDark : illustrationsLight;
+
+  const onSubmit = (values) => {
+    setData([...data, values]);
+    let arr = [...data, values];
+    const newArr = JSON.parse(localStorage.getItem("dataKey"));
+    const filterArr = newArr.find((e) => values.email === e.email);
+    console.log(filterArr, "sfuydh");
+    if (filterArr) {
+      toast.error("email id alredy exist");
+    } else {
+      localStorage.setItem("dataKey", JSON.stringify(arr));
+      navigate("/home");
+    }
+    console.log(newArr);
+  };
+  useEffect(() => {
+    const item = JSON.parse(localStorage.getItem("dataKey"));
+    setData(item || []);
+  }, []);
 
   return (
     <div className="auth-wrapper auth-cover">
@@ -124,57 +150,95 @@ const Register = () => {
             <CardText className="mb-2">
               Make your app management easy and fun!
             </CardText>
-            <Form
-              className="auth-register-form mt-2"
-              onSubmit={(e) => e.preventDefault()}
+            <Formik
+              initialValues={initialValues}
+              onSubmit={onSubmit}
+              validationSchema={RegisterSchema}
             >
-              <div className="mb-1">
-                <Label className="form-label" for="register-username">
-                  Username
-                </Label>
-                <Input
-                  type="text"
-                  id="register-username"
-                  placeholder="johndoe"
-                  autoFocus
-                />
-              </div>
-              <div className="mb-1">
-                <Label className="form-label" for="register-email">
-                  Email
-                </Label>
-                <Input
-                  type="email"
-                  id="register-email"
-                  placeholder="john@example.com"
-                />
-              </div>
-              <div className="mb-1">
-                <Label className="form-label" for="register-password">
-                  Password
-                </Label>
-                <InputPasswordToggle
-                  className="input-group-merge"
-                  id="register-password"
-                />
-              </div>
-              <div className="form-check mb-1">
-                <Input type="checkbox" id="terms" />
-                <Label className="form-check-label" for="terms">
-                  I agree to
-                  <a
-                    className="ms-25"
-                    href="/"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    privacy policy & terms
-                  </a>
-                </Label>
-              </div>
-              <Button tag={Link} to="/" color="primary" block>
-                Sign up
-              </Button>
-            </Form>
+              {({
+                values,
+                handleChange,
+                errors,
+                touched,
+                handleSubmit,
+                handleBlur,
+              }) => (
+                <Form
+                  className="auth-register-form mt-2"
+                  onSubmit={handleSubmit}
+                >
+                  <div className="mb-1">
+                    <Label className="form-label" for="username">
+                      Username
+                    </Label>
+                    <Input
+                      type="text"
+                      id="username"
+                      name="username"
+                      placeholder="johndoe"
+                      autoFocus
+                      value={values.username}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.username && touched.username ? (
+                      <div className="validation-text">{errors.username}</div>
+                    ) : null}
+                  </div>
+                  <div className="mb-1">
+                    <Label className="form-label" for="email">
+                      Email
+                    </Label>
+                    <Input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="john@example.com"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.email && touched.email ? (
+                      <div className="validation-text">{errors.email}</div>
+                    ) : null}
+                  </div>
+                  <div className="mb-1">
+                    <Label className="form-label" for="password">
+                      Password
+                    </Label>
+                    <InputPasswordToggle
+                      className="input-group-merge"
+                      id="register-password"
+                      name="password"
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.password && touched.password ? (
+                      <div className="validation-text">{errors.password}</div>
+                    ) : null}
+                  </div>
+                  <div className="form-check mb-1">
+                    <Input type="checkbox" id="terms" />
+                    <Label className="form-check-label" for="terms">
+                      I agree to
+                      <a
+                        className="ms-25"
+                        href="/"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        privacy policy & terms
+                      </a>
+                    </Label>
+                  </div>
+                  {/* tag={Link} to="/" */}
+                  <Button color="primary" block type="submit">
+                    Sign up
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+
             <p className="text-center mt-2">
               <span className="me-25">Already have an account?</span>
               <Link to="/login">
