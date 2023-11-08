@@ -30,7 +30,7 @@ const BlankLayout = () => {
         "dark-layout": skin === "dark",
       })}
     >
-      <div className="app-content content">
+      <div className="app-content content overflow-hidden">
         <div className="content-wrapper">
           <div className="content-body">
             <Outlet />

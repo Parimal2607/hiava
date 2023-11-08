@@ -21,7 +21,7 @@ function MenuBar() {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div >
+    <div data-aos="fade-up" data-aos-easing="ease-out-cubic">
       <Navbar expand="md" container="md">
         <NavbarBrand href="/">Hiava</NavbarBrand>
         <NavbarToggler onClick={toggle} />

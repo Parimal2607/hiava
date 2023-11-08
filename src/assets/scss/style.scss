@@ -883,7 +883,7 @@ hr {
             align-items: center;
             gap: 20px;
             flex-wrap: wrap;
-            padding-bottom: 48px;
+            padding-bottom: 80px;
         }
 
     }
@@ -907,8 +907,25 @@ hr {
 
         .chat-content {
             height: 100%;
-            min-height: 664px;
+            max-height: 664px;
             overflow: auto;
+
+            &::-webkit-scrollbar {
+                width: 5px;
+                height: 5px;
+                background-color: transparent;
+
+                &::-webkit-scrollbar-track {
+
+                    background-color: transparent;
+                    border-radius: 10px;
+                }
+            }
+
+            &::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background-color: transparent;
+            }
 
             .chat-left-box {
 
@@ -921,6 +938,8 @@ hr {
         }
 
         .chat-footer {
+            margin-top: 20px;
+
             .input-group {
                 input {
                     color: rgba(255, 255, 255, .9);
@@ -935,5 +954,92 @@ hr {
                 }
             }
         }
+    }
+}
+
+.meet-ava {
+    p {
+        color: #6938ef;
+        font-weight: 600;
+    }
+
+    h5 {
+        color: #475467;
+        font-weight: 500;
+    }
+
+}
+
+.meet-ava-right {
+    .icon-outline {
+        width: 3.5rem;
+        height: 3.5rem;
+        min-height: 3.5rem;
+        min-width: 3.5rem;
+        color: #6938ef;
+        background-color: #ebe9fe;
+        border: 0.5rem solid #f4f3ff;
+        border-radius: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+.banner {
+    background-color: #f2f4f7;
+    padding: 40px;
+}
+
+// swipper css
+.slider-css {
+    .swiper {
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 500px;
+            height: 500px;
+
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}
+.input-box{
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: transparent;
+    padding: 0.571rem 1rem;
+    border-radius: 0.357rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span{
+        margin: 0;
+        color: $white;
+    }
+}
+.temp-card {
+    width: 100%;
+    text-align: center;
+    background-color: #e9ecf0;
+    border-radius: 1rem;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 0 1.5rem 2rem;
+    font-weight: 500;
+    display: flex;
+    box-shadow: none;
+    .temp-card-header{
+        margin-top: -30px;
+    }
+    .temp-card-content{
+        margin-top: 12px;
     }
 }

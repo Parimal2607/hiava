@@ -1,6 +1,6 @@
 // ** React Imports
 import { useSkin } from "@hooks/useSkin";
-import { Link, useNavigate } from "react-router-dom";
+import { json, Link, useNavigate } from "react-router-dom";
 
 // ** Icons Imports
 import { Facebook, Twitter, Mail, GitHub } from "react-feather";
@@ -46,8 +46,10 @@ const Login = () => {
     const newArr = userName.find(
       (e) =>
         values.loginEmail === e.email && values.loginPassword === e.password
+
     );
     if (newArr) {
+      localStorage.setItem("userData", JSON.stringify(newArr))
       toast.success("You have successfully logged in.");
       navigate("/home");
     } else {

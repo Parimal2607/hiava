@@ -28,6 +28,10 @@ import {
 import defaultAvatar from "@src/assets/images/portrait/small/avatar-s-11.jpg";
 
 const UserDropdown = () => {
+  const handleLogout = () => {
+    console.log("logout");
+    localStorage.removeItem("userData");
+  };
   return (
     <UncontrolledDropdown tag="li" className="dropdown-user nav-item">
       <DropdownToggle
@@ -48,7 +52,7 @@ const UserDropdown = () => {
         />
       </DropdownToggle>
       <DropdownMenu end>
-        <DropdownItem tag={Link} to="/profile" >
+        <DropdownItem tag={Link} to="/profile">
           <User size={14} className="me-75" />
           <span className="align-middle">Profile</span>
         </DropdownItem>
@@ -81,7 +85,7 @@ const UserDropdown = () => {
           <HelpCircle size={14} className="me-75" />
           <span className="align-middle">FAQ</span>
         </DropdownItem>
-        <DropdownItem tag={Link} to="/login">
+        <DropdownItem tag={Link} onClick={handleLogout}>
           <Power size={14} className="me-75" />
           <span className="align-middle">Logout</span>
         </DropdownItem>

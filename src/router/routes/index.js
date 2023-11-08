@@ -1,6 +1,6 @@
 // ** React Imports
-import { Fragment, lazy } from "react";
-import { Navigate } from "react-router-dom";
+import { Fragment } from "react";
+
 // ** Layouts
 import BlankLayout from "@layouts/BlankLayout";
 import VerticalLayout from "@src/layouts/VerticalLayout";
@@ -9,6 +9,7 @@ import LayoutWrapper from "@src/@core/layouts/components/layout-wrapper";
 
 // ** Route Components
 import PublicRoute from "@components/routes/PublicRoute";
+import PrivateRoute from "@components/routes/PrivateRoute";
 
 // ** Utils
 import { isObjEmpty } from "@utils";
@@ -23,86 +24,14 @@ const getLayout = {
 const TemplateTitle = "%s - Vuexy React Admin Template";
 
 // ** Default Route
-const DefaultRoute = "/home";
+const DefaultRoute = "/login";
 
-const Dashboard = lazy(() =>
-  import("../../views/Components/Dashboard/Dashboard.js")
-);
-const ChatPage = lazy(() => import("../../views/Components/Chat/Chat"));
-const Template = lazy(() =>
-  import("../../views/Components/Templates/Template.js")
-);
-const SideChat = lazy(() => import("../../views/Components/common/SideChat"));
-const Profile = lazy(() => import("../../views/Components/Profile/Profile"));
-const WebPage = lazy(() => import("../../views/Components/WebPage/LandingPage"));
-const Login = lazy(() => import("../../views/Login"));
-const Register = lazy(() => import("../../views/Register"));
-const ForgotPassword = lazy(() => import("../../views/ForgotPassword"));
-const Error = lazy(() => import("../../views/Error"));
+//
+import AuthenticationRoutes from "./Authentication";
+import DashboardRoutes from "./DashboardRoutes";
 
 // ** Merge Routes
-const Routes = [
-  {
-    path: "/",
-    index: true,
-    element: <Navigate replace to={DefaultRoute} />,
-  },
-  {
-    path: "/home",
-    element: <Dashboard />,
-  },
-  {
-    path: "/chat",
-    element: <ChatPage />,
-  },
-  {
-    path: "/side-chat/:id",
-    element: <SideChat />,
-  },
-  {
-    path: "/profile",
-    element: <Profile />,
-  },
-  {
-    path: "/template",
-    element: <Template />,
-  },
-  {
-    path: "/web-page",
-    element: <WebPage />,
-    meta: {
-      layout: "blank",
-    },
-  },
-  {
-    path: "/login",
-    element: <Login />,
-    meta: {
-      layout: "blank",
-    },
-  },
-  {
-    path: "/register",
-    element: <Register />,
-    meta: {
-      layout: "blank",
-    },
-  },
-  {
-    path: "/forgot-password",
-    element: <ForgotPassword />,
-    meta: {
-      layout: "blank",
-    },
-  },
-  {
-    path: "/error",
-    element: <Error />,
-    meta: {
-      layout: "blank",
-    },
-  },
-];
+const Routes = [...AuthenticationRoutes, ...DashboardRoutes];
 
 const getRouteMeta = (route) => {
   if (isObjEmpty(route.element.props)) {
@@ -112,6 +41,10 @@ const getRouteMeta = (route) => {
       return {};
     }
   }
+};
+
+const FullPublicRoute = ({ children }) => {
+  return <>{children}</>;
 };
 
 // ** Return Filtered Array of Routes & Paths
@@ -127,11 +60,16 @@ const MergeLayoutRoutes = (layout, defaultLayout) => {
         ((route.meta === undefined || route.meta.layout === undefined) &&
           defaultLayout === layout)
       ) {
-        const RouteTag = PublicRoute;
+        let RouteTag = PrivateRoute;
 
         // ** Check for public or private route
         if (route.meta) {
           route.meta.layout === "blank" ? (isBlank = true) : (isBlank = false);
+          RouteTag = route.meta.publicRoute
+            ? route?.meta?.fullPublic
+              ? FullPublicRoute
+              : PublicRoute
+            : PrivateRoute;
         }
         if (route.element) {
           const Wrapper =
