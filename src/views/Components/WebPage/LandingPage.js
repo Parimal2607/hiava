@@ -7,7 +7,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import UseCase from "./UseCase";
 import MainTemplate from "./MainTemplate";
-import AutoType from "./AutoType";
+import Footer from "./Footer";
+import { SpeedLight } from "./SpeedLight";
 const LandingPage = () => {
   useEffect(() => {
     AOS.init();
@@ -20,9 +21,11 @@ const LandingPage = () => {
         <AutoChat />
       </div>
       <MeetAva />
-      <UseCase/>
-      <MainTemplate/>
-      <AutoType/>
+      <UseCase />
+      <SpeedLight/>
+      <MainTemplate />
+
+      <Footer />
     </div>
   );
 };

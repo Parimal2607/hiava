@@ -1011,7 +1011,8 @@ hr {
         }
     }
 }
-.input-box{
+
+.input-box {
     background-color: rgba(255, 255, 255, 0.05);
     border-color: transparent;
     padding: 0.571rem 1rem;
@@ -1019,11 +1020,13 @@ hr {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    span{
+
+    span {
         margin: 0;
         color: $white;
     }
 }
+
 .temp-card {
     width: 100%;
     text-align: center;
@@ -1036,10 +1039,57 @@ hr {
     font-weight: 500;
     display: flex;
     box-shadow: none;
-    .temp-card-header{
+
+    .temp-card-header {
         margin-top: -30px;
     }
-    .temp-card-content{
+
+    .temp-card-content {
         margin-top: 12px;
     }
 }
+
+.footer-section {
+    footer {
+        background-color: #000212;
+        background-image: radial-gradient(ellipse 50% 80% at 20% 40%, rgba(93, 52, 221, 0.1), rgba(93, 52, 221, 0)), radial-gradient(ellipse 50% 80% at 80% 50%, rgba(120, 119, 198, 0.15), rgba(93, 52, 221, 0));
+
+    }
+}
+
+.light {
+    background-color: #f2f3f3;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.parallax-effect {
+    max-height: 900px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    will-change: transform, opacity;
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(34deg) rotateY(-9deg) rotateZ(26deg) skew(0deg, 0deg) scale(0.8) translateX(145px);
+    transform-style: preserve-3d;
+    opacity: 1;
+    scroll-behavior: smooth;
+    position: absolute;
+    top: -260px;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+        background-color: transparent;
+
+        &::-webkit-scrollbar-track {
+
+            background-color: transparent;
+            border-radius: 10px;
+        }
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: transparent;
+    }
+}
+
