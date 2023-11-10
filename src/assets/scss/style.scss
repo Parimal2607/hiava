@@ -1068,7 +1068,7 @@ hr {
     overflow-y: auto;
     overflow-x: hidden;
     will-change: transform, opacity;
-    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(34deg) rotateY(-9deg) rotateZ(26deg) skew(0deg, 0deg) scale(0.8) translateX(145px);
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1)  skew(0deg, 0deg) scale(0.8) translateX(145px);
     transform-style: preserve-3d;
     opacity: 1;
     scroll-behavior: smooth;
@@ -1090,6 +1090,9 @@ hr {
     &::-webkit-scrollbar-thumb {
         border-radius: 10px;
         background-color: transparent;
+    }
+    .card-width{
+        max-width: 33.33%;
     }
 }
 
